@@ -1,4 +1,4 @@
-ASTROCOMM - INTELLIGENT SPACE COMMUNICATION  SYATEM
+# ASTROCOMM - INTELLIGENT SPACE COMMUNICATION  SYATEM
 
 AstroComm is an advanced AI-driven communication system, designed to overcome the challenges of deep-space communication by achieving 98% accuracy in error detection and correction. Inspired by Chandrayaan-2 and Chandrayaan-3, AstroComm incorporates robust solutions for signal loss, noise interference, and real-time synchronization, addressing all errors officially reported by ISRO.
 
