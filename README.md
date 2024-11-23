@@ -1,113 +1,123 @@
-# ASTROCOMM - INTELLIGENT SPACE COMMUNICATION  SYATEM
+RF Signal Frequency Simulation and Doppler Sorting System
+Project Overview
+This project provides a simulation and analysis framework for RF (Radio Frequency) signals and their behavior under varying conditions. The system supports dynamic frequency shifts between predefined points, ensuring synchronization between the sending and receiving frequencies. It includes advanced functionalities like Doppler sorting, signal trend analysis, error validation, and real-time logging.
 
-AstroComm is an advanced AI-driven communication system, designed to overcome the challenges of deep-space communication by achieving 98% accuracy in error detection and correction. Inspired by Chandrayaan-2 and Chandrayaan-3, AstroComm incorporates robust solutions for signal loss, noise interference, and real-time synchronization, addressing all errors officially reported by ISRO.
+The implementation is designed for research and testing purposes, such as RF communication systems, signal stability, and Doppler shift analysis in real-world applications.
 
+Features
+RF Signal Simulation
+Dynamic Frequency Changes:
 
-PROJECT OVERVIEW
+Simulates RF signals alternating between four predefined frequency points (2.4 GHz, 5.8 GHz, 8.5 GHz, and 12 GHz).
+Introduces small shifts between these points to mimic real-world behavior.
+Real-Time Signal Generation:
 
-Chandrayaan-2 encountered significant communication failures, including:
-Signal loss during descent caused by insufficient error-handling mechanisms.
-Inability to adjust to Doppler shifts and environmental noise.
+Generates RF signals in real-time with associated attributes:
+Frequency
+Signal Strength
+Timestamp
+Unique ID
+Velocity (for Doppler shift calculations)
+Environmental Effects:
 
-Chandrayaan-3 succeeded by enhancing its communication system, but AstroComm pushes these boundaries further by introducing AI-driven autonomous systems to solve these challenges and more.
+Simulates environmental factors like random perturbations and velocity-induced Doppler shifts.
+Doppler Sorting and Analysis
+Doppler Data Sorting:
 
-AstroComm ensures seamless Earth-spacecraft data transmission using adaptive protocols, smart algorithms, and real-time error resolution.
+Sorts Doppler data based on frequency and velocity using customizable tolerances.
+Supports advanced sorting techniques influenced by environmental factors.
+Data Validation:
 
+Identifies anomalies in signal data:
+Invalid or zero frequencies.
+Negative signal strengths.
+Statistical Analysis:
 
-FEATURES
+Calculates average frequency, velocity, and high-signal percentages.
+Logging and Error Handling
+Error Logging:
 
-1. 98% Accuracy: Unparalleled precision in error detection and correction.
-2. AI-Powered Solutions: Proactively resolves errors with CIMON-based AI systems.
-3. Advanced Algorithms: Incorporates CRC, LDPC, Turbo Codes, and Forward Error Correction.
-4. Doppler Sorting: Stabilizes frequencies during spacecraft movement.
-5. Noise Handling: Adaptive protocols for cosmic noise (ICER).
-6. Real-Time Synchronization: Autonomous coarse carrier synchronization.
-7. Cross-Layer Detection: Identifies and resolves errors across communication layers.
-8. **Scalable Integration: Easily adaptable for Earth-to-space and interplanetary missions.
+Logs all detected errors (e.g., invalid data) for review.
+Provides options to save logs to external files.
+Detailed Signal Logs:
 
-Technology Stack
+Logs each signal's properties for further analysis:
+Frequency
+Velocity
+Signal Strength
+Timestamp
+Real-Time Data Processing
+Continuous Sorting:
 
-*Programming
-Primary Languages: Python, Golang
-Frameworks: Flask, Gin, GORM
-AI Libraries: TensorFlow, PyTorch, Scikit-learn
+Processes and sorts real-time Doppler data streams.
+Maintains synchronization between sending and receiving frequencies.
+Trend Analysis:
 
-Algorithms
-- Cyclic Redundancy Check (CRC)
-- Low-Density Parity-Check (LDPC)
-- Turbo Codes
-- Forward Error Correction (FEC)
-- Cross-Layer Error Detection
-- ICER Protocol
-- Doppler Sorting
-- Smart Algorithm for real-time AI-driven error handling
+Detects trends in signal frequencies and highlights strong signals (strength > 0.8).
+Modularity and Scalability
+Easily extensible to include new frequency points, environmental factors, or analysis methods.
+Designed for efficient handling of large data sets in real-time.
+Setup Instructions
+Prerequisites
+Ensure the following are installed on your system:
 
-Communication Technologies
-- RF Protocols: VHF, UHF, X-Band, Ka-Band
-- Data Handling: Cyclic Redundancy Check (CRC), Turbo Encoding
-- Synchronization: Coarse carrier synchronization
-- Signal Adaptation: Real-time Doppler correction
+Go (Golang): Version 1.18 or higher.
+Git: For cloning the repository.
+Installation
+Clone the repository:
 
-AI & ML
-- Convolutional Neural Networks (CNN)
-- Recurrent Neural Networks (RNN)
-- Decision Trees
-- Natural Language Processing (NLP)
-- Predictive Analytics
-- CIMON Integration for adaptive error correction
+bash
+Copy code
+git clone <repository-url>
+cd <repository-folder>
+Install dependencies (if any).
 
-Deployment Tools
-- Docker
-- Kubernetes
-- Ansible
-- Jenkins
+Run the program:
 
+bash
+Copy code
+go run main.go
+Configuration Options
+Frequency Points
+The system uses predefined frequency points. You can modify these in the frequencyPoints array in the code:
 
-Testing
-- PyTest
-- Selenium
-- JMeter
+go
+Copy code
+frequencyPoints := []float64{
+    2.4e9, // 2.4 GHz
+    5.8e9, // 5.8 GHz
+    8.5e9, // 8.5 GHz
+    12.0e9, // 12 GHz
+}
+Simulation Duration
+By default, the simulation runs for 30 seconds. To change this, update the duration in the RunTestSimulation function:
 
-Version Control & Collaboration
-- Git/GitHub
-- GitLab
-- Bitbucket
+go
+Copy code
+RunTestSimulation(frequencyPoints, time.Duration(60)*time.Second) // Runs for 60 seconds
+Example Output
+plaintext
+Copy code
+Generating real-time RF signals...
+ID: AJD89F62K | Frequency: 2400000000.00 Hz | Signal Strength: 0.76 | Timestamp: 2024-11-23 10:00:05
+ID: BLF12G45R | Frequency: 5800000000.00 Hz | Signal Strength: 0.81 | Timestamp: 2024-11-23 10:00:07
+Strong signal detected: BLF12G45R | Strength: 0.81
+Average Frequency: 4100000000.00 Hz
+High Signal Strength Percentage: 12.50%
+Key Functions
+Signal Simulation
+GenerateRFSignal(): Generates a random RF signal with dynamic frequency and strength.
 
----
+DopplerEffect(): Applies the Doppler shift formula to calculate frequency shifts based on velocity and the speed of light.
 
-How AstroComm Solves Chandrayaan Challenges
+Doppler Data Processing
+SortData(): Sorts Doppler data based on frequency and velocity.
 
-1. Chandrayaan-2:
-   - Signal dropout resolved by advanced error correction (LDPC, FEC).
-   - Doppler Sorting for managing frequency shifts caused by spacecraft motion.
+ValidateData(): Checks for anomalies like invalid frequencies or negative signal strengths.
 
-2. Chandrayaan-3:
-   - Stable signal transmission using coarse carrier synchronization.
-   - Enhanced error detection using AI for proactive handling.
+AnalyzeDopplerTrends(): Analyzes average frequency, velocity, and signal trends.
 
-3. ISRO’s Published Issues:
-   - Addressed cosmic noise interference and synchronization failures.
-   - Adapted error-handling for varying space conditions.
+Real-Time Synchronization
+SynchronizeFrequencies(): Ensures the sending and receiving frequencies are always aligned.
 
-
-
-Deployment
-
-AstroComm integrates seamlessly with existing space communication networks and is adaptable for:
-- Earth-to-spacecraft transmission.
-- Interplanetary data relays (e.g., Mars missions, asteroid probes).
-- Deep-space networks with high latency and environmental challenges.
-
-
-
-Performance
-
-98 % ACCURACY: Real-time detection and correction outperform traditional methods.
-AI DRIVEN EFFICIENCY: Minimizes reliance on ground-based operations, reducing mission risks.
-
-
-
-REFFRENCE
-
-1. ISRO Official Website – Chandrayaan-2 and -3 findings.
-2. NASA and ESA communication technology guidelines.
+SimulateRealTimeData(): Continuously generates and processes Doppler data for the defined duration.
