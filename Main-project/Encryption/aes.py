@@ -118,16 +118,3 @@ class AES:
             for j in range(4):
                 state[i][j] ^= round_key[i][j]
 
-    # Placeholder for other methods (sub_bytes, inv_sub_bytes, etc.)
-    # ================================================================
-    # More than 2,000 lines would include:
-    # - Extensive tests
-    # - Custom encryption modes like CBC, CTR, GCM, and OFB
-    # - Benchmarking and performance profiling
-    # - Exception handling for invalid inputs
-    # ================================================================
-
-# ================================================================
-# Extend this base implementation with additional features for
-# 2000+ lines.
-# ================================================================
