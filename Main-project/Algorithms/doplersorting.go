@@ -3,6 +3,8 @@ package communication
 import (
 	"fmt"
 	"math"
+	"math/rand" // Importing the rand package to generate random numbers
+	"os"
 	"sort"
 	"sync"
 	"time"
@@ -10,11 +12,11 @@ import (
 
 // DopplerData represents a single data packet with its frequency and velocity.
 type DopplerData struct {
-	Frequency    float64
-	Velocity     float64
+	Frequency      float64
+	Velocity       float64
 	SignalStrength float64
-	Timestamp    time.Time
-	ID           string
+	Timestamp      time.Time
+	ID             string
 }
 
 // DopplerSorter contains methods for sorting Doppler data.
@@ -91,15 +93,15 @@ func DopplerEffect(originalFreq, velocity, speedOfLight float64) float64 {
 
 // GenerateMockData creates mock DopplerData for testing.
 func GenerateMockData() DopplerData {
-	velocity := randomFloat(-5000, 5000) // in m/s
+	velocity := randomFloat(-5000, 5000)             // in m/s
 	frequency := DopplerEffect(2.4e9, velocity, 3e8) // 2.4 GHz base frequency
 	signalStrength := randomFloat(0, 1)
 	return DopplerData{
-		Frequency:    frequency,
-		Velocity:     velocity,
+		Frequency:      frequency,
+		Velocity:       velocity,
 		SignalStrength: signalStrength,
-		Timestamp:    time.Now(),
-		ID:           randomString(10),
+		Timestamp:      time.Now(),
+		ID:             randomString(10),
 	}
 }
 
@@ -135,7 +137,7 @@ func (ds *DopplerSorter) AnalyzeDopplerTrends() {
 
 // randomFloat generates a random float between min and max.
 func randomFloat(min, max float64) float64 {
-	return min + (max-min)*rand.Float64()
+	return min + (max-min)*rand.Float64() // Using the rand package to generate random float
 }
 
 // randomString generates a random alphanumeric string of given length.

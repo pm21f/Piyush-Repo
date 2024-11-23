@@ -3,7 +3,7 @@ package communication
 import (
 	"fmt"
 	"math"
-	"math/cmplx"
+
 	"math/rand"
 	"os"
 	"sync"
@@ -12,26 +12,26 @@ import (
 
 // CarrierSignal represents a signal in the system.
 type CarrierSignal struct {
-	Frequency     float64 // in Hz
-	Phase         float64 // in radians
-	Amplitude     float64 // in arbitrary units
-	NoiseLevel    float64 // in dB
-	SignalID      string
-	Timestamp     time.Time
+	Frequency  float64 // in Hz
+	Phase      float64 // in radians
+	Amplitude  float64 // in arbitrary units
+	NoiseLevel float64 // in dB
+	SignalID   string
+	Timestamp  time.Time
 }
 
 // CarrierSync handles synchronization of carrier signals.
 type CarrierSync struct {
-	signals      []CarrierSignal
-	mutex        sync.Mutex
-	errorLog     []string
+	signals       []CarrierSignal
+	mutex         sync.Mutex
+	errorLog      []string
 	syncTolerance float64 // Tolerance in Hz
 }
 
 // NewCarrierSync initializes a new CarrierSync object.
 func NewCarrierSync(tolerance float64) *CarrierSync {
 	return &CarrierSync{
-		signals:      []CarrierSignal{},
+		signals:       []CarrierSignal{},
 		syncTolerance: tolerance,
 	}
 }
@@ -45,7 +45,7 @@ func (cs *CarrierSync) AddSignal(signal CarrierSignal) {
 
 // SimulateSignal generates a simulated carrier signal.
 func SimulateSignal() CarrierSignal {
-	baseFrequency := 1.8e9 // 1.8 GHz
+	baseFrequency := 1.8e9          // 1.8 GHz
 	noise := randomFloat(0.01, 0.1) // Simulated noise
 	phase := randomFloat(0, 2*math.Pi)
 	amplitude := randomFloat(0.8, 1.2)
@@ -160,12 +160,12 @@ func (cs *CarrierSync) LogSignalDetails() {
 // Helper Functions
 
 // randomFloat generates a random float between min and max.
-func randomFloat(min, max float64) float64 {
+func randomFloat1(min, max float64) float64 {
 	return min + rand.Float64()*(max-min)
 }
 
 // randomString generates a random alphanumeric string of given length.
-func randomString(length int) string {
+func randomString2(length int) string {
 	const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 	result := make([]byte, length)
 	for i := range result {
