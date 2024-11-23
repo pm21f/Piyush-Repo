@@ -86,7 +86,7 @@ AstroComm is designed to integrate seamlessly with existing space communication 
 - I-Driven Efficincy*: Minimizes the need for ground-based operations, reducing mission risks and improving operational efficiency.
 
 ## Reference
-1. SRO Official Wesite* – Chandrayaan-2 and Chandrayaan-3 findings and challenges.
+1. SRO Official Wesite* –- Chandrayaan-2 and Chandrayaan-3 findings and challenges.
 2. ASA and ESA* – ommunication challenges in deep-space missions and solutions.
 
 AstroComm is an innovative step forward in space communication technology, providing an effective, reliable solution to many of the challenges faced by ISRO and other space agencies in previous missions. By leveraging cutting-edge AI and error correction techniques, it ensures smoother, more reliable data transmission for future space missions.
